@@ -1,5 +1,5 @@
 import CodeBlock from '#/components/CodeBlock';
-import FullScreenText from '#/components/FullScreenText';
+import FullScreen from '#/components/FullScreen';
 import Quote from '#/components/Quote';
 import ReceivePropsExample from './components/ReceivePropsExample';
 import Link from '#/components/Link';
@@ -60,7 +60,7 @@ export default async function Memoization() {
             <p className="mt-4">現在我們將程式碼變成在 component 中各自呼叫 fetch 方法：</p>
             <CodeBlock code={codeFetchRandomData} />
 
-            <FullScreenText>結果會是什麼❓</FullScreenText>
+            <FullScreen>結果會是什麼❓</FullScreen>
 
             <Quote 
                 className="group"

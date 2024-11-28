@@ -61,7 +61,7 @@ export default function DeduplicateRequests() {
                         <ListItem>Request Memoization 是 React 功能，不是 Next.js 的功能。</ListItem>
                         <ListItem>Memoization 只會影響使用 <Code>GET</Code> method 的 <Code>fetch</Code> 方法。</ListItem>
                         <ListItem>
-                            只能作用在 Server Components，這代表:
+                            只能作用在 <span className="text-pink-400 font-bold italic">Server Components</span>，這代表:
                             <List>
                                 <ListItem>它會套用在 <Code>generateMetadata</Code>、<Code>generateStaticParams</Code>，Layouts，Pages，和其他所有的 Server Components 中的 <Code>fetch</Code> requests。</ListItem>
                                 <ListItem>它不會套用在 Route Handlers 中的 <Code>fetch</Code> requests。</ListItem>
