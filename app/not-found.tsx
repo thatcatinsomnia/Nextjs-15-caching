@@ -5,7 +5,7 @@ export default function NotFound() {
         <div className="h-dvh flex flex-col items-center justify-center text-center leading-loose"> 
             <h1 className="mb-4 text-7xl">404</h1>
             <p className="mb-8 text-4xl">PAGE NOT FOUND</p>
-            <Link href="/" className="text-xl underline">back to home</Link>
+            <Link href="/" className="text-xl underline">Back to home</Link>
         </div>
     );
 } 
