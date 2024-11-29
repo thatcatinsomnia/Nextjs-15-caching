@@ -21,7 +21,7 @@ export default async function FetchDataCached() {
 `.trim();
 
 const codeFetchDataNextRevalidate = `
-export default async function FetchDataCached() {
+export default async function FetchDataNextRevalidate() {
     const res = await fetch('http://localhost:3000/api/random', { next: { revalidate: 3 } });
     const { data } = await res.json();
 

@@ -3,7 +3,6 @@ export default async function FetchDataCached() {
     const { data } = await res.json();
 
     return (
-        <div className="p-4 bg-pink-500 rounded">with force-cache: {data}</div>
+        <div className="p-4 bg-pink-500 rounded">Data: {data}</div>
     );
 }
-
