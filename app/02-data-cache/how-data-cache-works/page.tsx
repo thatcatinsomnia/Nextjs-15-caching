@@ -5,7 +5,6 @@ import { List, ListItem } from '#/components/List';
 import Quote from '#/components/Quote';
 import Code from '#/components/Code';
 import CodeBlock from '#/components/CodeBlock';
-import ExampleBlock from '#/components/ExampleBlock';
 import Link from '#/components/Link';
 import OnDemandRevalidateExample from './OnDemandRevalidateExample';
 import howDataCacheWorksUrl from './images/how-data-cache-works.png';
@@ -25,7 +24,7 @@ export default function Page() {
                 />
 
                 <List className="pt-4">
-                    <ListItem>上面的的 <Code>fetch</Code> 在使用了 <Code>'force-cache'</Code>，Next.js 會檢查 Data Cache 有沒有 cached response。</ListItem>
+                    <ListItem>上面的的 <Code>fetch</Code> 在使用了 <Code>&apos;force-cache&apos;</Code>，Next.js 會檢查 Data Cache 有沒有 cached response。</ListItem>
                     <ListItem className="list-none">
                         <List> 
                             <ListItem>如果 cached response 存在的話，會立刻返回並 <Link href="/memoization">memoized</Link>。</ListItem>

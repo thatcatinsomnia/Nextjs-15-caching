@@ -15,7 +15,7 @@ export default function DataCache() {
                 <p className="mb-4">Next.js 的 Data Cache 機制，讓你在不同的 server requests 和 deployments 間持久化。因為 Next.js 擴展了 <Code>fetch</Code> API，允許在 server 的每個 requests 設定自己的 caching segmantice。</p>
 
                 <Quote title="💡 good to know">
-                    <p>在 Browser 中，<Code>fetch</Code> 中的 <Code>cache</Code> option 用來表示 request 如何和 browser's HTTP cache 互動。在 Next.js 中的 <Code>cache</Code> 表示 server-side request 如何和 server 的 Data Cache 互動。</p>
+                    <p>在 Browser 中，<Code>fetch</Code> 中的 <Code>cache</Code> option 用來表示 request 如何和 browser&apos;s HTTP cache 互動。在 Next.js 中的 <Code>cache</Code> 表示 server-side request 如何和 server 的 Data Cache 互動。</p>
                 </Quote>
             </section>
 

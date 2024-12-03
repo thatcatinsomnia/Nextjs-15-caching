@@ -27,7 +27,7 @@ export default async function Memoization() {
             <section>
                 <p>沒錯，跟你腦中所想的一樣，兩個 Components 雖然各自在自己的 component 中透過 api 取得資料，但是得到的資料卻一樣:</p>
                 <ComponentWithDataFetchExample />
-                <p>你可能會想說是因為 cache 的原因，但是這裡的 cache 可能不是你所想的 "cache"。</p>
+                <p>你可能會想說是因為 cache 的原因，但是這裡的 cache 可能不是你所想的 &quot;cache&quot;。</p>
             </section>
 
             <footer className="mt-20 flex items-center justify-between">

@@ -36,7 +36,7 @@ export default function DeduplicateRequests() {
                     <ListItem>rendering 期間時，第一次的 request function 會執行，結果並不會在 memory 中，會是一個 cache <Code>MISS</Code>。</ListItem>
                     <ListItem>因此 request function 會被執行，並將結果儲存在 memory 中。</ListItem>
                     <ListItem>在同一個 render pass 中，後續相同的 request function 在被執行時將會是 cache <Code>HIT</Code>，結果會直接從 memory 中返回，該 request function 則不會被執行。</ListItem>
-                    <ListItem>一旦 route render 完成，memory 會 "reset"，所有的 request memoization 會被清空。</ListItem>
+                    <ListItem>一旦 route render 完成，memory 會 &quot;reset&quot;，所有的 request memoization 會被清空。</ListItem>
                 </List>
 
                 <Quote title="💡 good to know">

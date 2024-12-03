@@ -24,7 +24,7 @@ export default function Page() {
                     <FetchDataCached />
                 </ExampleBlock>
 
-                <p>試著重新整理畫面，在頁面 refresh 後，因為已經設定了 <Code>cache: 'force-cache'</Code>，資料會直接從 Data Cache 中被返回，但如果使用 full refresh 的話，資料又會被重新抓取並放到 Data Cache 中。</p>
+                <p>試著重新整理畫面，在頁面 refresh 後，因為已經設定了 <Code>cache: &apos;force-cache&apos;</Code>，資料會直接從 Data Cache 中被返回，但如果使用 full refresh 的話，資料又會被重新抓取並放到 Data Cache 中。</p>
             </section>
 
             <section>
