@@ -13,7 +13,7 @@ export function ListItem({
 }
 
 const listVariants = {
-    ordered: 'list-numeric',
+    ordered: 'list-decimal',
     unordered: 'list-disc'
 }
 

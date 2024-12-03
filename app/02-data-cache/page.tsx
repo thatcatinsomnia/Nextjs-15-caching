@@ -1,33 +1,16 @@
 import Link from '#/components/Link';
+import Title from '#/components/Title';
 import Code from '#/components/Code';
 import Quote from '#/components/Quote';
 import CodeBlock from '#/components/CodeBlock';
-import ExampleBlock from '#/components/ExampleBlock';
-import FetchData from './components/FetchData';
-
-const codeOptionsCache = `
-fetch('https://...', { cache: 'force-cache' });
-`.trim();
-
-const codeOptionsNextRevalidate = `
-// revalidate after 1 hour
-fetch('https://...', { next: { revalidate: 3600 } });
-`.trim();
-
-const codeFetchData = `
-export default async function FetchDataCached() {
-    const res = await fetch('http://localhost:3000/api/random');
-    const { data } = await res.json();
-
-    return (
-        <div className="p-4 bg-pink-500 rounded">Data: {data}</div>
-    );
-}
-`.trim();
+import DefaultFetchBehaviorExample from './DefaultFetchBehaviorExample';
+import { codeDefaultFetchBehavior, codeOptionsCache, codeOptionsNextRevalidate } from './codeExamples';
 
 export default function DataCache() {
     return (
         <div>
+            <Title>Data Cache</Title>
+
             <section>
                 <p className="mb-4">Next.js 的 Data Cache 機制，讓你在不同的 server requests 和 deployments 間持久化。因為 Next.js 擴展了 <Code>fetch</Code> API，允許在 server 的每個 requests 設定自己的 caching segmantice。</p>
 
@@ -37,17 +20,14 @@ export default function DataCache() {
             </section>
 
             <section>
-                <p>在 Next.js 15 中，server side 的 fetch 預設不會進行 cache，可以看到下面的例子，每次重新整理時候，資料都會變動:</p>
+                <p>在 Next.js 15 中，server side 的 fetch 預設不會進行 cache(在 Next.js 14 中預設是啟用，但在 Next.js 15 中預設已經改為不啟用 Data Cache，developer 可以自行決定何時要使用它。)，可以看到下面的例子，每次重新整理時候，資料都會變動:</p>
 
-                <CodeBlock code={codeFetchData} />
-
-                <ExampleBlock>
-                    <FetchData />
-                </ExampleBlock>
+                <CodeBlock code={codeDefaultFetchBehavior} />
+                <DefaultFetchBehaviorExample />
             </section>
 
             <section>
-                <p>你可以透過 <Code>fetch</Code> options 來設定 caching 行為:</p>
+                <p>想要將 fetch function 的回傳值進行 cache，你可以透過 <Code>fetch</Code> options 來設定:</p>
 
                 <div className="mt-4">
                     <Link 
@@ -73,8 +53,8 @@ export default function DataCache() {
             </section>
 
             <footer className="mt-20 flex items-center justify-between">
-                <Link href="/memoization/deduplicate-requests">Prev: memoization/deduplicate-requests</Link>
-                <Link href="/data-cache/cache-and-next-revalidate-options">Next: cache-and-next-revalidate-options</Link>
+                <Link href="/01-memoization/deduplicate-requests">Prev: Deduplicate-Requests</Link>
+                <Link href="/02-data-cache/cache-and-next-revalidate-options">Next: Cache-and-Next-Revalidate-Options</Link>
             </footer>
         </div>
     )

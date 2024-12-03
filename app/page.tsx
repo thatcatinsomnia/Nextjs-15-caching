@@ -70,7 +70,7 @@ export default function Home() {
         </section>
 
         <footer className="mt-12 flex items-center justify-end">
-            <Link href="/memoization">Next: Request Memoization</Link>
+            <Link href="/01-memoization">Next: Request Memoization</Link>
         </footer>
 
 

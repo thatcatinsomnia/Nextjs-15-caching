@@ -1,5 +1,35 @@
+export const codeTimeBasedRevalidation = `
+// revalidate every 1 hour
+fetch('...', { next: { revalidate: 3600 } });
+`.trim();
+
+export const codeOptingOutCache = `
+let data = await fetch('...', { cache: 'no-store' });
+`.trim();
+
+export const codeOnDemandRevalidate = `
 import { revalidateTag, revalidatePath } from "next/cache";
-import FetchDataRevalidateTag from "./FetchDataRevalidateTag";
+import FetchWithRevalidateTag from "./FetchWithRevalidateTag";
+
+export default async function FetchDataRevalidateTag({ 
+    tags 
+}: { 
+    tags: string[];
+}) {
+    const users = await fetchUsersWithTag(tags, {
+        next: {
+            tags: tags,
+            revalidate: 600
+        }
+    });
+
+    return (
+        <Box name="FetchWithRevalidateTag">
+            <Tags tags={tags} />
+            {users.join(', ')}
+        </Box>
+    );
+}
 
 export default function RevalidateTagExample() {
     const revalidateTagAction = async (formData: FormData) => {
@@ -9,7 +39,7 @@ export default function RevalidateTagExample() {
         revalidateTag(tag as string);
     };
 
-    const revalidateAllAction = async () => {
+    const revalidateAllTagsAction = async () => {
         'use server';
 
         revalidateTag('a');
@@ -27,30 +57,33 @@ export default function RevalidateTagExample() {
         <div className="space-y-4">
             <FetchDataRevalidateTag tags={['a', 'c']} />
             <FetchDataRevalidateTag tags={['b', 'c']} />
+
             <div className="flex items-center gap-2">
                 <form action={revalidateTagAction}>
                     <input type="hidden" name="tag" value="a" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate a</button>
+                    <button>revalidate a</button>
                 </form>
 
                 <form action={revalidateTagAction}>
                     <input type="hidden" name="tag" value="b" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate b</button>
+                    <button>revalidate b</button>
                 </form>
 
                 <form action={revalidateTagAction}>
                     <input type="hidden" name="tag" value="c" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate c</button>
+                    <button>revalidate c</button>
                 </form>
 
-                <form action={revalidateAllAction}>
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate all</button>
+                <form action={revalidateAllTagsAction}>
+                    <button>revalidate all</button>
                 </form>
 
                 <form action={revalidatePathAction}>
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate path</button>
+                    <button>revalidate current path</button>
                 </form>
             </div>
         </div>
     );
 }
+`;
+

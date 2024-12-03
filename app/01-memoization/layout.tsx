@@ -3,8 +3,7 @@ import Title from "#/components/Title";
 
 export default function Layout({ children }: { children: ReactNode}) {
     return (
-        <div>
-            <Title>Data Cache</Title>
+        <div className="p-4 py-8">
             <main>{children}</main>
         </div>
     );
