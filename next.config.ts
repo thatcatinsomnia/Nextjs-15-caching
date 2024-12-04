@@ -5,11 +5,11 @@ const nextConfig: NextConfig = {
   // compiler: {
   //   removeConsole: false
   // },
-  logging: {
-    fetches: {
-      fullUrl: true
-    }
-  } 
+  // logging: {
+  //   fetches: {
+  //     fullUrl: true
+  //   }
+  // } 
 };
 
 export default nextConfig;
