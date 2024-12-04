@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 p {
     @apply leading-relaxed;
 }
@@ -29,4 +29,4 @@ section + section {
   display: inline-block;
   text-align: right;
   color: rgba(161, 164, 197, 0.4)
-}
+} */
