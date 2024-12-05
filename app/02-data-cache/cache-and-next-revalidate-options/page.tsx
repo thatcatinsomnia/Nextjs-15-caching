@@ -12,6 +12,8 @@ import happyUrl from './images/happy.png';
 import { codeFetchWithCacheOption, codeFetchWithNextRevalidate } from './codeExamples';
 
 export default function Page() {
+    console.log('PAGE: [Cache and Next Revalidate Options]');
+
     return (
         <div>
             <section>

@@ -6,6 +6,8 @@ import Code from '#/components/Code';
 import Bold from '#/components/Bold';
 
 export default function RouterCache() {
+    console.log('PAGE: [Client Side Router Cache]');
+
     return (
         <div>
             <Title>Client Side Router Cache</Title>
@@ -33,11 +35,11 @@ export default function RouterCache() {
                 <List>
                     <ListItem><Bold>Session:</Bold> cache 會在 navigation 之間持續存在，但如果 refresh 就會消失。</ListItem>
                     <ListItem><Bold>Automatic Invalidation Period</Bold>: <p>layouts 和 loading 狀態，在一段時間後會自動失效。時間依照 resource 是怎麼被 <Link href="">prefetch</Link>，並且 resource 是 statically generated</p></ListItem>
-                    <ListItem>Default Prefetching(<Code>prefetch=&#x7B;null&#x7D;</Code>) 或是未指定: dynamic pages 不 cahce，static pages 五分鐘。</ListItem>
+                    <ListItem>Default Prefetching(<Code>prefetch=&#x7B;null&#x7D;</Code>) 或是未指定: dynamic pages 不會 cahce，static pages 五分鐘。</ListItem>
                     <ListItem>Default Prefetching(<Code>prefetch=&#x7B;true&#x7D;</Code> 或是 <Code>router.prefetch</Code>): static & dynamic pages 都是五分鐘。</ListItem>
                 </List>
 
-                <p>當頁面 refresh 時，會清除所有的 cache segments，但是 automatic invalidation period 只會影響 prefetch 後的各個 segment但是 automatic invalidation period 只會影響 prefetch 後的各個 segment</p>
+                <p>當頁面 refresh 時，會清除所有的 cache segments，但是 automatic invalidation period 只會影響 prefetch 後的各個 segment</p>
             </section>
 
             <section>
@@ -60,21 +62,10 @@ export default function RouterCache() {
                 <p>Next.js 15 中，預設 page segments 是沒有開啟 cache。</p>
             </section>
 
-            <section>
-                <Heading>Data Cache 和 Full Route Cache Interaction</Heading>
-                <List>
-                    <ListItem>重新驗證或是取消 Data Cache 會使 Full Route Cache 失效，因為 render output 取決於 data。</ListItem>
-                    <ListItem>取消 Full Route Cache 不會影響 Data Cache。你可以在 router 中有 cached 和 uncached data。</ListItem>
-                </List>
-            </section>
-
-            <section>
-                <Heading>Data Cache 和 Client-side Router Cache Interaction</Heading>
-                <List>
-                    <ListItem>要立刻使 Data Cache 和 Router Cache 失效，你可以在 Server Action 中使用 revalidatePath 或是 RevalidateTag</ListItem>
-                    <ListItem>在 Route Handler 中重新驗證 Data Cache 並不會立刻使 Router Cache 失效。</ListItem>
-                </List>
-            </section>
+            <footer className="mt-20 flex items-center justify-between">
+                <Link href="/03-full-route-cache">Prev: Full Route Cache</Link>
+                <Link href="/05-how-cache-interaction">Next: How Cache Interaction</Link>
+            </footer>
         </div>
     );
 }

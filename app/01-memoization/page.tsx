@@ -7,6 +7,8 @@ import ComponentWithDataFetchExample from './ComponentWithDataFetchExample';
 import { codeUsersWithProps, codeFetchUsers } from './codeExamples';
 
 export default async function Memoization() {
+    console.log('PAGE: [Request Memoization]');
+
     return (
         <div>
             <Title>Request Memoization</Title>
