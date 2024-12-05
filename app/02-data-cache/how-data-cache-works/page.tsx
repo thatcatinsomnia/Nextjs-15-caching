@@ -5,81 +5,12 @@ import { List, ListItem } from '#/components/List';
 import Quote from '#/components/Quote';
 import Code from '#/components/Code';
 import CodeBlock from '#/components/CodeBlock';
-import ExampleBlock from '#/components/ExampleBlock';
 import Link from '#/components/Link';
-import RevalidateTagExample from './components/RevalidateTagExample';
+import OnDemandRevalidateExample from './OnDemandRevalidateExample';
 import howDataCacheWorksUrl from './images/how-data-cache-works.png';
 import howTimeBasedRevalidationWorksUrl from './images/how-time-based-revalidation-works.png';
 import howOnDemandRevalidationWorksUrl from './images/how-on-demand-revalidation-works.png';
-
-const codeTimeBasedRevalidation = `
-// revalidate every 1 hour
-fetch('...', { next: { revalidate: 3600 } });
-`.trim();
-
-const codeOptingOutCache = `
-let data = await fetch('...', { cache: 'no-store' });
-`.trim();
-
-const codeRevalidateExample = `
-import { revalidateTag, revalidatePath } from "next/cache";
-import FetchDataRevalidateTag from "./FetchDataRevalidateTag";
-
-export default function RevalidateTagExample() {
-    const revalidateTagAction = async (formData: FormData) => {
-        'use server';
-
-        const tag = formData.get('tag') as string;
-        revalidateTag(tag as string);
-    };
-
-    const revalidateAllAction = async () => {
-        'use server';
-
-        revalidateTag('a');
-        revalidateTag('b');
-        revalidateTag('c');
-    };
-
-    const revalidatePathAction = async () => {
-        'use server';
-
-        revalidatePath('/data-cache/how-data-cache-works');
-    };
-
-    return (
-        <div className="space-y-4">
-            <FetchDataRevalidateTag tags={['a', 'c']} />
-            <FetchDataRevalidateTag tags={['b', 'c']} />
-            <div className="flex items-center gap-2">
-                <form action={revalidateTagAction}>
-                    <input type="hidden" name="tag" value="a" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate a</button>
-                </form>
-
-                <form action={revalidateTagAction}>
-                    <input type="hidden" name="tag" value="b" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate b</button>
-                </form>
-
-                <form action={revalidateTagAction}>
-                    <input type="hidden" name="tag" value="c" />
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate c</button>
-                </form>
-
-                <form action={revalidateAllAction}>
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate all</button>
-                </form>
-
-                <form action={revalidatePathAction}>
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded">Revalidate current path</button>
-                </form>
-            </div>
-        </div>
-    );
-}
-
-`;
+import { codeTimeBasedRevalidation, codeOnDemandRevalidate, codeOptingOutCache } from './codeExamples';
 
 export default function Page() {
     return (
@@ -93,7 +24,7 @@ export default function Page() {
                 />
 
                 <List className="pt-4">
-                    <ListItem>第一個 <Code>fetch</Code> 在 rendering 時使用了 <Code>'force-cache'</Code> Next.js 檢查 Data Cache 中檢查有沒有 cached response。</ListItem>
+                    <ListItem>上面的的 <Code>fetch</Code> 在使用了 <Code>&apos;force-cache&apos;</Code>，Next.js 會檢查 Data Cache 有沒有 cached response。</ListItem>
                     <ListItem className="list-none">
                         <List> 
                             <ListItem>如果 cached response 存在的話，會立刻返回並 <Link href="/memoization">memoized</Link>。</ListItem>
@@ -107,7 +38,7 @@ export default function Page() {
                 <Quote title="Data Cache 和 Request Memoization 差別">
                     <List>
                         <ListItem>兩者都可以透過重複使用 cached data 來提高效能。</ListItem>
-                        <ListItem>Data Cache 會在 requests 和 deployments 持續存在。</ListItem>
+                        <ListItem>Data Cache 會在不同的 requests 和 deployments 持續存在。</ListItem>
                         <ListItem>memoization 只會持續到 request 的 lifetime。</ListItem>
                     </List>
                 </Quote>
@@ -166,15 +97,15 @@ export default function Page() {
 
             <section>
                 <Heading size="sm">How On-demand Revalidation Works</Heading>
-                <p className="mb-4">資料可以透過<Link href="https://nextjs.org/docs/app/building-your-application/caching#revalidatepath">revalidatePath</Link> 或是 <Link href="https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag">revalidateTag</Link>方式重新驗證</p>
+                <p className="mb-4">資料可以透過 <Link href="https://nextjs.org/docs/app/building-your-application/caching#revalidatepath">revalidatePath</Link> 或是 <Link href="https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag">revalidateTag</Link> 方式重新驗證:</p>
                 <Image 
                     src={howOnDemandRevalidationWorksUrl}
                     alt="how on-demand revalidation works"
                 />
 
                 <List>
-                    <ListItem>第一次 fetch 執行時，資料會從外部來源過來，並且會儲存在 Data Cache 中。</ListItem>
-                    <ListItem>當 on-demand revalidation 被觸發後，對應到的 cache 項目會被從 cache 中清除。</ListItem>
+                    <ListItem>第一次 fetch 執行時，資料會從remote 過來，並且會儲存在 Data Cache 中。</ListItem>
+                    <ListItem>當 on-demand revalidation 被觸發後，對應到的 cache 項目會被從 Data Cache 中清除。</ListItem>
                     <ListItem className="list-none">
                         <List> 
                             <ListItem>這和 time-based revalidation 不同，time-based revalidation 會保留 stale 的資料直到新的資料被 fetched。</ListItem>
@@ -185,11 +116,10 @@ export default function Page() {
             </section>
 
             <section>
-                下面展示了 revalidateTag 的例子，可以 invalidate 不同的 tag:
-                <CodeBlock code={codeRevalidateExample} />
-                <ExampleBlock>
-                    <RevalidateTagExample />
-                </ExampleBlock>
+                <p>下面展示了 on demand revalidate 的例子，可以 invalidate 不同的 tag:</p>
+                <CodeBlock code={codeOnDemandRevalidate} />
+
+                <OnDemandRevalidateExample />
             </section>
 
             <section>
@@ -199,8 +129,8 @@ export default function Page() {
             </section>
 
             <footer className="pt-20 flex items-center justify-between">
-                <Link href="/data-cache/cache-and-next-revalidate-options">Prev: cache-and-next-revalidation-options</Link>
-                <Link href="#">Next: unknown</Link>
+                <Link href="/02-data-cache/cache-and-next-revalidate-options">Prev: cache-and-next-revalidation-options</Link>
+                <Link href="/03-full-route-cache">Next: Full Route Cache</Link>
             </footer>
         </div>
     );

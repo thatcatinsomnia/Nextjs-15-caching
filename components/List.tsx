@@ -13,7 +13,7 @@ export function ListItem({
 }
 
 const listVariants = {
-    ordered: 'list-numeric',
+    ordered: 'list-decimal',
     unordered: 'list-disc'
 }
 
@@ -30,7 +30,7 @@ export function List({
     const variants = listVariants[type];
 
     return (
-        <Component className={twMerge('pl-6', variants, className)}>
+        <Component className={twMerge('pl-8', variants, className)}>
             {children}
         </Component>
     );

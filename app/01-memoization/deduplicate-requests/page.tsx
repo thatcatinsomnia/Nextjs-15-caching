@@ -1,39 +1,22 @@
 import Image from 'next/image';
 import Link from "#/components/Link";
-import FetchDataExample from "./components/FetchDataExample";
 import Heading from '#/components/Heading';
 import Code from '#/components/Code';
 import CodeBlock from '#/components/CodeBlock';
 import Quote from '#/components/Quote';
 import { List, ListItem } from '#/components/List';
-import WtfUrl from "./images/wtf.webp";
+import { codeAbortController } from './codeExamples';
 import deduplicateRequestUrl from './images/deduplicate-requests.png';
 import howRequestMemoizationWorksUrl from './images/how-request-memoization-works.png';
-
-const codeAbortController = `
-const { signal } = new AbortController();
-fetch(url, { signal });
-`.trim();
 
 export default function DeduplicateRequests() {
     return (
         <div>
             <section>
-                <p>沒錯，跟你腦中所想的一樣:</p>
-                <FetchDataExample />
-            </section>
+                <Heading>What is Request Memoization</Heading>
 
-            <section className="my-[70vh]">
-                <Image 
-                    className="mx-auto"
-                    src={WtfUrl}
-                    alt="wtf"
-                />
-            </section>
-
-            <section>
                 <p className="mb-4">
-                    Nextjs 中的 fetch API 會自動 memoize 相同 URL 和 options 的 reqeusts，這表示你可以在 React Compoennt tree 中的不同地方呼叫相同的 fetch function 而不會重複發送 request。
+                    Nextjs 中的 fetch API 會自動 memoize 相同 URL 和 options 的 reqeusts，這表示你可以在 React Compoennt tree 中的不同地方呼叫有相同 options 的 fetch function 而不會重複發送 request。
                 </p>
                 <Image 
                     src={deduplicateRequestUrl}
@@ -50,10 +33,10 @@ export default function DeduplicateRequests() {
                 />
 
                 <List type="ordered">
-                    <ListItem>執行 rendering 期間時，第一次的 request function 會執行，結果並不會在 memory 中，會是一個 cache <Code>MISS</Code>。</ListItem>
-                    <ListItem>因此會到 request function 會被執行，並將結果儲存在 memory 中。</ListItem>
-                    <ListItem>在同一個 render pass 中，後續相同的 request function 在被執行時將會是 cache <Code>HIT</Code>，結果會直接從 memory 中返回，而該 request function 不會被執行。</ListItem>
-                    <ListItem>一旦 route render 完成，memory 會被 "reset" 並且所有的 request memoization 會被清空。</ListItem>
+                    <ListItem>rendering 期間時，第一次的 request function 會執行，結果並不會在 memory 中，會是一個 cache <Code>MISS</Code>。</ListItem>
+                    <ListItem>因此 request function 會被執行，並將結果儲存在 memory 中。</ListItem>
+                    <ListItem>在同一個 render pass 中，後續相同的 request function 在被執行時將會是 cache <Code>HIT</Code>，結果會直接從 memory 中返回，該 request function 則不會被執行。</ListItem>
+                    <ListItem>一旦 route render 完成，memory 會 &quot;reset&quot;，所有的 request memoization 會被清空。</ListItem>
                 </List>
 
                 <Quote title="💡 good to know">
@@ -84,15 +67,16 @@ export default function DeduplicateRequests() {
                 <section>
                     <h3 className="text-lg font-bold">Opting Out</h3>
                     <p>這是 React 預設的優化行為，並不推薦關掉。</p>
-                    <p>如果想要針對特定的 request，可以使用 <Link href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">AbortController</Link> 中的 <Link href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController/signal">signal</Link> 屬性，然而這並不會取消掉 memoization 而是取消 request 的發送。</p>
+                    <p>如果想要針對特定的 request，可以使用 <Link href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">AbortController</Link> 中的 <Link href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController/signal">signal</Link> 屬性，但這並不會取消掉 memoization 而是取消 request 的發送。</p>
                     <CodeBlock code={codeAbortController} />
                 </section>
             </section>
 
             <footer className="mt-12 flex items-center justify-between">
-                <Link href="/memoization">Prev: Memoization</Link>
-                <Link href="/data-cache">Next: Data Cache</Link>
+                <Link href="/01-memoization">Prev: Memoization</Link>
+                <Link href="/02-data-cache">Next: Data Cache</Link>
             </footer>
         </div>
     );
 }
+
