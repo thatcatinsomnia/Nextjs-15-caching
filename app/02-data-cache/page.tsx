@@ -49,12 +49,11 @@ export default function DataCache() {
 
                     <CodeBlock code={codeNextRevalidateOption} />
                 </div>
-
             </section>
 
             <footer className="mt-20 flex items-center justify-between">
-                <Link href="/01-memoization/deduplicate-requests">Prev: Deduplicate-Requests</Link>
-                <Link href="/02-data-cache/cache-and-next-revalidate-options">Next: Cache-and-Next-Revalidate-Options</Link>
+                <Link href="/02-data-cache/cache-and-next-revalidate-options">Prev: cache-and-next-revalidation-options</Link>
+                <Link href="/03-full-route-cache">Next: Full Route Cache</Link>
             </footer>
         </div>
     )
