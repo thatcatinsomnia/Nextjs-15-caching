@@ -9,6 +9,8 @@ import fullRouteCacheUrl from './images/full-route-cache.png';
 import staticAndDynamicRenderingUrl from './images/static-and-dynamic-rendering.png';
 
 export default function FullRouteCache() {
+    console.log('PAGE: [Full Route Cache]');
+
     return (
         <div>
             <Title>Full Route Cache</Title>
@@ -19,12 +21,12 @@ export default function FullRouteCache() {
                   <ListItem>Static Site Generation</ListItem>
                   <ListItem>Static Rendering</ListItem>
               </List>
-              <p className="mt-4">這幾個術語經常被交換使用，但是指的都是同一件事: application 在 build time，rendering 並對 routes 進行 cache 的過程。</p>
+              <p className="mt-4">這幾個術語經常被交換使用，但是指的都是同一件事: 在 build time，rendering 並且對 routes 進行 cache 的過程。</p>
             </section>
 
             <section>
                 <p>Next.js 會在 build time render 和 cache routes，避免每次接收到 request 後才進行 rendering。</p>
-                <p>想要理解 Full Route Cache 的運作方式，透過了解 React 如何 render 和 Next.js 怎麼對結果進行 cache 很有幫助:</p>
+                <p>想要理解 Full Route Cache 的運作方式，了解 React 如何 render 和 Next.js 怎麼對結果進行 cache 很有幫助:</p>
             </section>
 
             <section>
@@ -38,12 +40,12 @@ export default function FullRouteCache() {
                     <ListItem>Next.js 使用 React Server Component Payload 和 Client Component Javascript 指令在 server 端 render HTML。</ListItem>
                 </List>
 
-                <p className="mt-4">這表示當每個 work 完成時我們可以透過 stream 的方式回傳 response。</p>
+                <p className="mt-4">這表示當每當 work 完成時我們可以透過 stream 的方式回傳 response。</p>
             </section>
 
             <section>
                 <Heading>2. Next.js Caching on the Server (Full Route Cache)</Heading>
-                <p className="mb-4">Next.js 預設行為會在 server 端對 routes rendered 結果(React Server Component Payload 和 HTML)進行 cache。這會用在 build time 時的 statically rendered 或是 revalidation。</p>
+                <p className="mb-4">Next.js 預設行為會在 server 端對 routes rendered 結果(React Server Component Payload 和 HTML)進行 cache。會用在 build time 的 statically rendered 和重新驗證。</p>
                 <Image 
                     src={fullRouteCacheUrl}
                     alt="full route cache"
@@ -52,7 +54,7 @@ export default function FullRouteCache() {
 
             <section>
                 <Heading>3. React Hyration and Reconcitiation on the Client</Heading>
-                <p>在 client 端的 request 期間:</p>
+                <p>client 端的 request 期間:</p>
                 <List type="ordered">
                     <ListItem>HTML 會立刻用來顯示 Client 和 Server Component 無法互動的初始化預覽。</ListItem>
                     <ListItem>React Server Component Payload 會和 Client 以及 rendered Server Component trees 進行 reconcile，藉此更新 DOM。</ListItem>

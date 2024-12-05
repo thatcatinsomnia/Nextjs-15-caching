@@ -7,6 +7,8 @@ import DefaultFetchBehaviorExample from './DefaultFetchBehaviorExample';
 import { codeDefaultFetchBehavior, codeOptionsCache, codeOptionsNextRevalidate } from './codeExamples';
 
 export default function DataCache() {
+    console.log('PAGE: [Data Cache]');
+
     return (
         <div>
             <Title>Data Cache</Title>

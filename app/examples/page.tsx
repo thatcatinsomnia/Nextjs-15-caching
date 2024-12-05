@@ -12,12 +12,16 @@ const examples = [
     {
         title: 'data cache without full route cache',
         href: '/examples/data-cache-without-full-route-cache'
-    }
+    },
+    {
+        title: 'client side router cache',
+        href: '/examples/client-side-router-cache',
+    },
 ]
 export default function ExamplesPage() {
     return (
         <div className="p-20">
-            <h2 className="py-12 text-2xl font-bold">Examples</h2>
+            <h2 className="py-12 text-2xl font-bold text-center">Examples</h2>
 
             <section className="flex flex-col gap-4 text-center">
                 {examples.map((example) => (

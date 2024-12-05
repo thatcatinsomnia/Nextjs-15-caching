@@ -13,6 +13,8 @@ import howOnDemandRevalidationWorksUrl from './images/how-on-demand-revalidation
 import { codeTimeBasedRevalidation, codeOnDemandRevalidate, codeOptingOutCache } from './codeExamples';
 
 export default function Page() {
+    console.log('PAGE: [How Data Cache Works]');
+
     return (
         <div>
             <section>

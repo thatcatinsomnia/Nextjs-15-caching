@@ -1,7 +1,7 @@
 import { fetchUsersWithTag } from '#/helpers/fetchUsers';
 import Box from '#/components/Box';
 
-export default async function fetchDataCached() {
+export default async function FetchDataCached() {
     const users = await fetchUsersWithTag(['data-cache-without-full-route-cache'], {
         cache: 'force-cache'
     });

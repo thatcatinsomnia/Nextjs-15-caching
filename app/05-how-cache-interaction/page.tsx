@@ -1,9 +1,12 @@
 import Heading from "#/components/Heading";
 import Title from "#/components/Title";
+import Link from '#/components/Link';
 
 import { List, ListItem } from "#/components/List";
 
 export default function Page() {
+    console.log('PAGE: [How Cache Interaction]');
+
     return (
         <div>
             <Title>How Cache Interaction</Title>
@@ -23,6 +26,10 @@ export default function Page() {
                     <ListItem>在 Route Handler 中重新驗證 Data Cache 並不會立刻使 Router Cache 失效。</ListItem>
                 </List>
             </section>
+
+            <footer className="mt-20 flex items-center justify-between">
+                <Link href="/04-router-cache">Prev: Router Cache</Link>
+            </footer>
         </div>
     );
 }

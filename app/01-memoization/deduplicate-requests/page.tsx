@@ -10,6 +10,8 @@ import deduplicateRequestUrl from './images/deduplicate-requests.png';
 import howRequestMemoizationWorksUrl from './images/how-request-memoization-works.png';
 
 export default function DeduplicateRequests() {
+    console.log('PAGE: [Deduplicate Requests]');
+
     return (
         <div>
             <section>
