@@ -12,9 +12,9 @@ async function DefaultFetchBehavior() {
     const users = await fetchUsers();
 
     return (
-        <Box name="DefaultFetchBehavior">
+        <Boundary title="DefaultFetchBehavior">
           {users.join(', ')}
-        </Box>
+        </Boundary>
     );
 }
 `.trim();

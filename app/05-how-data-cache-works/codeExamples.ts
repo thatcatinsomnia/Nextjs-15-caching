@@ -24,10 +24,10 @@ export default async function FetchWithRevalidateTag({
     });
 
     return (
-        <Box name="FetchWithRevalidateTag">
+        <Boundary title="FetchWithRevalidateTag">
             <Tags tags={tags} />
             {users.join(', ')}
-        </Box>
+        </Boundary>
     );
 }
 
@@ -50,7 +50,7 @@ export default function OnDemandRevalidateExample() {
     const revalidatePathAction = async () => {
         'use server';
 
-        revalidatePath('/data-cache/how-data-cache-works');
+        revalidatePath('/05-how-data-cache-works');
     };
 
     return (
@@ -85,5 +85,4 @@ export default function OnDemandRevalidateExample() {
         </div>
     );
 }
-`;
-
+`.trim();

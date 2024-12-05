@@ -1,13 +1,5 @@
 export const codeUsersWithProps = `
-function ComponentWithProps({ data }: { data: string[] }) {
-    return (
-        <Box name="ComponentWithProps">
-            {data.join(', ')}
-        </Box>
-    );
-}
-
-async function App() {
+async function Example() {
     const users = await fetchUsers();
 
     return (
@@ -24,9 +16,9 @@ async function ComponentWithDataFetch() {
     const users = await fetchUsers();
 
     return (
-        <Box name="ComponentWithDataFetch">
+        <Boundary title="ComponentWithDataFetch">
             {users.join(', ')}
-        </Box>
+        </Boundary>
     );
 }
 

@@ -2,11 +2,10 @@ import Image from 'next/image';
 import Code from '#/components/Code';
 import CodeBlock from '#/components/CodeBlock';
 import FullScreen from '#/components/FullScreen';
-import ExampleBlock from '#/components/ExampleBlock';
 import Link from '#/components/Link';
 import Heading from '#/components/Heading';
-import FetchWithCacheOption from './FetchWithCacheOption';
-import FetchWithNextRevalidate from './FetchWithNextRevalidate';
+import FetchWithCacheOptionExample from './FetchWithCacheOptionExample';
+import FetchWithNextRevalidateExample from './FetchWithNextRevalidateExample';
 import disappointedUrl from './images/disappointed.png';
 import happyUrl from './images/happy.png';
 import { codeFetchWithCacheOption, codeFetchWithNextRevalidate } from './codeExamples';
@@ -22,9 +21,7 @@ export default function Page() {
 
                 <CodeBlock code={codeFetchWithCacheOption} />
 
-                <ExampleBlock>
-                    <FetchWithCacheOption />
-                </ExampleBlock>
+                <FetchWithCacheOptionExample />
 
                 <p>試著重新整理畫面，在頁面 refresh 後，因為已經設定了 <Code>cache: &apos;force-cache&apos;</Code>，資料會直接從 Data Cache 中被返回，但如果使用 full refresh 的話，資料又會被重新抓取並放到 Data Cache 中。</p>
             </section>
@@ -36,9 +33,7 @@ export default function Page() {
 
                 <CodeBlock code={codeFetchWithNextRevalidate} />
 
-                <ExampleBlock>
-                    <FetchWithNextRevalidate />
-                </ExampleBlock>
+                <FetchWithNextRevalidateExample />
 
                 <p>這裡我們將 revalidate 的時間設定為 3 秒後，所以 3 秒後按下 refresh 應該可以看到資料更新。</p>
 
@@ -66,8 +61,8 @@ export default function Page() {
             </section>
 
             <footer className="mt-16 flex items-center justify-between">
-                <Link href="/02-data-cache">Prev: Data-Cache</Link>
-                <Link href="/02-data-cache/how-data-cache-works">Next: How-Data-Cache-Works</Link>
+                <Link href="/03-data-cache">Prev: Data Cache</Link>
+                <Link href="/05-how-data-cache-works">Next: How Data Cache Works</Link>
             </footer>
          </div>
     );

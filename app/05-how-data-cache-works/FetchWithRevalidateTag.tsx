@@ -1,5 +1,5 @@
+import Boundary from "#/components/Boundary";
 import { fetchUsersWithTag } from '#/helpers/fetchUsers';
-import Box from '#/components/Box';
 
 function Tags({ 
     tags 
@@ -28,10 +28,12 @@ export default async function FetchWithRevalidateTag({
     });
 
     return (
-        <Box name="FetchWithRevalidateTag">
-            <Tags tags={tags} />
-            {users.join(', ')}
-        </Box>
+        <div className="">
+            <Boundary title="FetchWithRevalidateTag">
+                <Tags tags={tags} />
+                {users.join(', ')}
+            </Boundary>
+        </div>
     );
 }
 

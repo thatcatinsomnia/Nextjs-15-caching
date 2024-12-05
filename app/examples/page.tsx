@@ -17,11 +17,12 @@ const examples = [
         title: 'client side router cache',
         href: '/examples/client-side-router-cache',
     },
-]
+];
+
 export default function ExamplesPage() {
     return (
-        <div className="p-20">
-            <h2 className="py-12 text-2xl font-bold text-center">Examples</h2>
+        <div>
+            <h2 className="py-8 text-2xl font-bold text-center">Examples</h2>
 
             <section className="flex flex-col gap-4 text-center">
                 {examples.map((example) => (

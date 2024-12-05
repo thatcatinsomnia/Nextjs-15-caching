@@ -63,8 +63,8 @@ export default function RouterCache() {
             </section>
 
             <footer className="mt-20 flex items-center justify-between">
-                <Link href="/03-full-route-cache">Prev: Full Route Cache</Link>
-                <Link href="/05-how-cache-interaction">Next: How Cache Interaction</Link>
+                <Link href="/06-full-route-cache">Prev: Full Route Cache</Link>
+                <Link href="/08-how-cache-interaction">Next: How Cache Interaction</Link>
             </footer>
         </div>
     );

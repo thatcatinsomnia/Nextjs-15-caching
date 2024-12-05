@@ -34,7 +34,7 @@ export default async function Memoization() {
 
             <footer className="mt-20 flex items-center justify-between">
                 <Link href="/">Prev: Home</Link>
-                <Link href="/01-memoization/deduplicate-requests">Next: Deduplicate Requests</Link>
+                <Link href="/02-deduplicate-requests">Next: Deduplicate Requests</Link>
             </footer>
         </div>
     );

@@ -3,9 +3,9 @@ export default async function FetchWithCacheOption() {
     const users = fetchUsers({ cache: 'force-cache' });
 
     return (
-        <Box name="FetchWithCacheOption">
+        <Boundary title="FetchWithCacheOption">
             {users.join(', ')}
-        </Box>
+        </Boundary>
     );
 }
 `.trim();
@@ -15,9 +15,9 @@ export default async function FetchWithNextRevalidate() {
     const users = fetchUsers({ next: { revalidate: 3 } });
 
     return (
-        <Box name="FetchWithNextRevalidate">
+        <Boundary title="FetchWithNextRevalidate">
             {users.join(', ')}
-        </Box>
+        </Boundary>
     );
 }
 `.trim();

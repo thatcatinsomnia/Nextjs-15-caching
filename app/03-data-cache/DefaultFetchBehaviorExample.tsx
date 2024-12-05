@@ -1,22 +1,21 @@
-import ExampleBlock from '#/components/ExampleBlock';
-import Box from '#/components/Box';
+import Boundary from "#/components/Boundary";
 import { fetchUsers } from '#/helpers/fetchUsers';
 
 async function DefaultFetchBehavior() {
     const users = await fetchUsers();
 
     return (
-      <Box name="DefaultFetchBehavior">
+        <Boundary title="DefaultFetchBehavior">
             {users.join(', ')}
-      </Box>
+        </Boundary>
     );
 }
 
 export default function DefaultFetchBehaviorExample() {
     return (
-        <ExampleBlock>
+        <div className="pt-4 mb-4 space-y-4">
             <DefaultFetchBehavior />
-        </ExampleBlock>
+        </div>
     );
 }
 

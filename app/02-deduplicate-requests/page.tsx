@@ -76,7 +76,7 @@ export default function DeduplicateRequests() {
 
             <footer className="mt-12 flex items-center justify-between">
                 <Link href="/01-memoization">Prev: Memoization</Link>
-                <Link href="/02-data-cache">Next: Data Cache</Link>
+                <Link href="/03-data-cache">Next: Data Cache</Link>
             </footer>
         </div>
     );

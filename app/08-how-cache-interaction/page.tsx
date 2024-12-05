@@ -28,7 +28,7 @@ export default function Page() {
             </section>
 
             <footer className="mt-20 flex items-center justify-between">
-                <Link href="/04-router-cache">Prev: Router Cache</Link>
+                <Link href="/07-router-cache">Prev: Router Cache</Link>
             </footer>
         </div>
     );

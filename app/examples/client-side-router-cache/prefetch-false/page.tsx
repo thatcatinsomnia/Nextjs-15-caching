@@ -9,8 +9,8 @@ export default async function PrefetchUndefinedPage() {
     const users = await fetchUsers();
 
     return (
-        <div className="pt-24">
-            <h2 className="py-12 text-2xl font-bold">prefetch=false</h2>
+        <div>
+            <h2 className="py-8 text-2xl font-bold">prefetch=false</h2>
 
             <Boundary>
                 <p className="mb-4">

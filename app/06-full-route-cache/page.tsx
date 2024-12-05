@@ -112,8 +112,8 @@ export default function FullRouteCache() {
             </section>
 
             <footer className="mt-20 flex items-center justify-between">
-                <Link href="/02-data-cache/cache-and-next-revalidate-options">Prev: Cache-and-Next-Revalidate-Options</Link>
-                <Link href="/04-router-cache">Next: Router Cache</Link>
+                <Link href="/05-how-data-cache-works">Prev: How Data Cache Works</Link>
+                <Link href="/07-router-cache">Next: Router Cache</Link>
             </footer>
         </div>
     );

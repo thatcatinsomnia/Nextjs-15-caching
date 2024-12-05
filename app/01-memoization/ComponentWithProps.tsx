@@ -1,9 +1,9 @@
-import Box from '#/components/Box';
+import Boundary from "#/components/Boundary";
 
 export default function ComponentWithProps({ data }: { data: string[] }) {
     return (
-        <Box name="ComponentWithProps">
+        <Boundary title="ComponentWithProps">
             {data.join(', ')}
-        </Box>
+        </Boundary>
     );
 }

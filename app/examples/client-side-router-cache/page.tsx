@@ -8,8 +8,8 @@ export default async function ClientSideRouterCachePage() {
     console.log('PAGE: [Client Side Router Cache]');
 
     return (
-        <div className="pt-24">
-            <h2 className="py-12 text-2xl font-bold">example of client side router cache</h2>
+        <div>
+            <h2 className="py-8 text-2xl font-bold">Example of client side router cache</h2>
 
             <Boundary>
                 <p className="mb-4">

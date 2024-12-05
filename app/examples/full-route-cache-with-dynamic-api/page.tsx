@@ -1,5 +1,5 @@
-import Box from "#/components/Box";
 import { fetchUsers } from "#/helpers/fetchUsers";
+import Boundary from "#/components/Boundary";
 
 export const dynamic = 'force-dynamic';
 // export const revalidate = 10;
@@ -10,11 +10,11 @@ export default async function FullRouteCacheWithDynamicAPIPage() {
 
     return (
         <div>
-            <h2 className="py-12 text-2xl font-bold">example of full route cache with dynamic api</h2>
+            <h2 className="py-8 text-2xl font-bold">Example of full route cache with dynamic api</h2>
 
-            <Box name="full route cache with dynamic api">
+            <Boundary title="Full Route Cache with Dynamic API">
                 {users.join(', ')}
-            </Box>
+            </Boundary>
         </div>
     );
 }
