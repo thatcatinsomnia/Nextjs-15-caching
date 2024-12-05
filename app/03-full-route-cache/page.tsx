@@ -23,7 +23,7 @@ export default function FullRouteCache() {
             </section>
 
             <section>
-                <p>Next.js 會在 build time 自動的 render 和 cache routes，避免每次接收到 request 後才進行 rendering。</p>
+                <p>Next.js 會在 build time render 和 cache routes，避免每次接收到 request 後才進行 rendering。</p>
                 <p>想要理解 Full Route Cache 的運作方式，透過了解 React 如何 render 和 Next.js 怎麼對結果進行 cache 很有幫助:</p>
             </section>
 

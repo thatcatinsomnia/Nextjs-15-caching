@@ -5,7 +5,7 @@ const defaultParams = {
     inc: 'name'
 };
 
-async function fetchUsersPrimitive(params: Record<string, any>, options: RequestInit) {
+async function fetchUsersPrimitive(params: Record<string, string|number>, options?: RequestInit) {
     const paramsToString = Object.keys(params).map(key => `${key}=${params[key as keyof typeof params]}`).join('&');
     const endpoint = `https://randomuser.me/api?${paramsToString}`;
 
@@ -24,7 +24,7 @@ export async function fetchUsers(options: RequestInit = {}) {
     return users;
 }
 
-export async function fetchUsersWithTag(tags: string[], options: RequestInit) {
+export async function fetchUsersWithTag(tags: string[], options?: RequestInit) {
     const mergedParams = {...defaultParams, tags: tags.join(', ')};
     const users = await fetchUsersPrimitive(mergedParams, options);
 
